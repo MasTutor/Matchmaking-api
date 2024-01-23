@@ -9,11 +9,8 @@ app = FastAPI()
 def run_matchmaking(email: str, category: str):
     try:
         results = main_workflow(email, category)
-        return {
-            "error": "false",
-            "message": "Successfully retrieved matches.",
-            "data": results
-        }
+        return results
+        
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

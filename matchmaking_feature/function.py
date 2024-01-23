@@ -157,27 +157,27 @@ def get_tutor_data(match_results):
     mycursor.close()
     close_db_connection(mydb, "Tutor")
 
-    # Filter rows based on matched IDs
+    # Filter rows based on matched IDs and limit to 5 results
     filtered_data = []
-    for match in match_results:
+    for match in match_results[:5]:  # Slice the first 5 matches
         for row in rows:
             if str(row[0]) == match['id']:
                 tutor_info = {
                     "id": str(row[0]),
                     "UserId": str(row[0]),
-                    "Nama": row[2],
-                    "hasPenis": row[3],
-                    "AgesRanges": row[4],
-                    "Specialization": row[5],
-                    "Categories": row[6],
-                    "AboutMe": row[8],
-                    "SkillsAndExperiences": row[9],
-                    "picture": row[10],
-                    "price": row[11],
+                    "Nama": row[1],
+                    "hasPenis": row[2],
+                    "AgesRanges": row[3],
+                    "Specialization": row[4],
+                    "Categories": row[5],
+                    "AboutMe": row[6],
+                    "SkillsAndExperiences": row[7],
+                    "picture": row[8],
+                    "price": row[9],
                     "accuracy": match['accuracy']
                 }
                 filtered_data.append(tutor_info)
-                break
+                break  # Break here to avoid adding multiple entries for the same user
 
     response = {
         "error": "false",
@@ -186,6 +186,7 @@ def get_tutor_data(match_results):
     }
 
     return response
+
 
 
 def delete_user_row_from_csv(file_path):
