@@ -170,10 +170,10 @@ def get_tutor_data(match_results):
                     "AgesRanges": row[4],
                     "Specialization": row[5],
                     "Categories": row[6],
-                    "AboutMe": row[7],
-                    "SkillsAndExperiences": row[8],
-                    "picture": row[9],
-                    "price": row[10],
+                    "AboutMe": row[8],
+                    "SkillsAndExperiences": row[9],
+                    "picture": row[10],
+                    "price": row[11],
                     "accuracy": match['accuracy']
                 }
                 filtered_data.append(tutor_info)
